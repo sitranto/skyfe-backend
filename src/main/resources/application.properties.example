@@ -1,0 +1,11 @@
+spring.application.name=skyfe
+
+server.port=8080
+
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/YOUR_DB_NAME //to change
+spring.datasource.username=USERNAME //to change
+spring.datasource.password=PASSWORD //to change
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
