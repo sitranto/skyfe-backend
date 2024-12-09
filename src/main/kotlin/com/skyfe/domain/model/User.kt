@@ -10,10 +10,13 @@ class User(
     var username: String,
     var number: String,
     var bio: String,
+    var password: String,
     @OneToMany(
         mappedBy = "user",
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL]
     )
     var userChat: MutableList<UserChat>
+
+
 ): BaseEntity<Long>()

@@ -18,4 +18,5 @@ class UserService(private val userRepository: UserRepository) {
 
     fun deleteUser(id: Int) =
         userRepository.delete(id)
+
 }
