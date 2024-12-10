@@ -2,7 +2,6 @@ package com.skyfe.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.http.HttpMethod
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -15,6 +14,7 @@ class SecurityConfiguration(private val authenticationProvider: AuthenticationPr
     @Bean
     fun filterChain(http: HttpSecurity): DefaultSecurityFilterChain =
         http
+            .cors().and().csrf().disable()
             .authorizeHttpRequests {
                 it
                     .anyRequest().permitAll()

@@ -1,17 +1,31 @@
 package com.skyfe.domain.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.JoinColumn
-import jakarta.persistence.ManyToOne
-import jakarta.persistence.Table
+import com.fasterxml.jackson.annotation.JsonIgnore
+import jakarta.persistence.*
 import org.hibernate.type.descriptor.jdbc.TimestampWithTimeZoneJdbcType
+import org.jetbrains.annotations.NotNull
 
 @Entity
-@Table(name = "Message")
+@Table(name = "message")
 class Message(
-    var text: String,
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    val from: UserChat,
-    val date: TimestampWithTimeZoneJdbcType
-): BaseEntity<Long>()
+    @Column(length = 2500)
+    @NotNull
+    var content: String,
+
+    @NotNull
+    var timeSend: TimestampWithTimeZoneJdbcType,
+
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "from_id")
+    var from: User,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    var chat: Chat,
+
+    var isRead: Boolean,
+
+    var extension: String
+
+    ): BaseEntity<Long>()
+

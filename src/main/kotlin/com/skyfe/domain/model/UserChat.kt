@@ -1,14 +1,19 @@
 package com.skyfe.domain.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "UserChat")
+@Table(name = "user_chat")
 class UserChat(
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    val user: User,
+    var user: User,
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "chat_id")
-    val chat: Chat
-): BaseEntity<Long>()
+    var chat: Chat
+
+    ): BaseEntity<Long>()
