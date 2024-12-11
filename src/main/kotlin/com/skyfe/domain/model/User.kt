@@ -1,5 +1,6 @@
 package com.skyfe.domain.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import jakarta.validation.constraints.Size
@@ -9,6 +10,7 @@ import org.jetbrains.annotations.NotNull
 @Entity
 @Table(name = "users")
 class User(
+    @JsonBackReference("user_id")
     @NotNull
     @Size(min = 1, max = 32)
     var firstName: String,
@@ -21,14 +23,16 @@ class User(
     @Size(min = 1, max = 32)
     var username: String,
 
+    @JsonBackReference("number")
     @NotNull
     @Column(unique = true)
     var number: String,
 
+    @JsonBackReference("bio")
     @Size(max = 150)
     var bio: String,
 
-    @JsonIgnore
+    @JsonBackReference("password")
     @NotNull
     @Column(unique = true)
     @Size(min = 1, max = 32)
