@@ -41,7 +41,7 @@ class JwtService(
             .payload
     }
 
-    fun extractUsername(token: String): String? =
+    fun extractNumber(token: String): String? =
         getAllClaims(token)
             .subject
 
@@ -51,8 +51,8 @@ class JwtService(
             .before(Date(System.currentTimeMillis()))
 
     fun isValid(token: String, userDetails: UserDetails): Boolean {
-        val username = extractUsername(token)
+        val number = extractNumber(token)
 
-        return userDetails.username == username && !isExpired(token)
+        return userDetails.username == number && !isExpired(token)
     }
 }
