@@ -29,7 +29,7 @@ class SecurityConfiguration(private val authenticationProvider: AuthenticationPr
             .authorizeHttpRequests {
                 it
                     .requestMatchers("/api/**").fullyAuthenticated()
-                    .anyRequest().permitAll()
+                    .requestMatchers("/api/auth", "/api/user").permitAll()
             }
             .sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
