@@ -37,6 +37,13 @@ class UserService(
             HttpStatus.OK
     }
 
+    fun checkUsername(username: String): HttpStatus {
+        return if(userRepository.existsByUsername(username))
+            HttpStatus.CONFLICT
+        else
+            HttpStatus.OK
+    }
+
     fun deleteUser(id: Int) =
         userRepository.delete(id)
 

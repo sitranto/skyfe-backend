@@ -27,9 +27,12 @@ class UserController(private val userService: UserService, private val authServi
     }
 
     @PostMapping("/number")
-    fun checkNumber (@RequestBody payload: UserDto): HttpStatus =
-        userService.checkNumber(payload.number)
+    fun checkNumber(@RequestBody payload: UserDto): HttpStatus =
+        userService.checkNumber(payload.number.toString())
 
+    @PostMapping("/username")
+    fun checkUsername(@RequestBody payload: UserDto): HttpStatus =
+        userService.checkUsername(payload.username.toString())
 
     @DeleteMapping("/{id}")
     fun deleteUser(@PathVariable("id") id: Int) =
