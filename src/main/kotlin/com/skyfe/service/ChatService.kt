@@ -26,8 +26,15 @@ class ChatService(
         userChatRepository.save(UserChat(author, chat))
         userChatRepository.save(UserChat(receiver, chat))
 
-        println(chat)
         return chat
+    }
+
+    fun deleteChat(chatId: Int): String {
+        val chat = chatRepository.findById(chatId)
+
+        chatRepository.deleteById(chatId)
+
+        return "Deleted chat $chatId"
     }
 
 }
