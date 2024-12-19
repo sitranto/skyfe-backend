@@ -2,6 +2,7 @@ package com.skyfe.controller
 
 import com.skyfe.domain.dto.AuthDto
 import com.skyfe.domain.dto.AuthResponse
+import com.skyfe.domain.dto.UserDto
 import com.skyfe.domain.model.User
 import com.skyfe.service.AuthService
 import com.skyfe.service.UserService
@@ -26,8 +27,9 @@ class UserController(private val userService: UserService, private val authServi
     }
 
     @PostMapping("/number")
-    fun checkNumber (@RequestBody payload: String): HttpStatus =
-        userService.checkNumber(payload)
+    fun checkNumber (@RequestBody payload: UserDto): HttpStatus =
+        userService.checkNumber(payload.number)
+
 
     @DeleteMapping("/{id}")
     fun deleteUser(@PathVariable("id") id: Int) =
