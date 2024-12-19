@@ -5,6 +5,7 @@ import com.skyfe.middlewhare.DataAlreadyExistsException
 import com.skyfe.middlewhare.DataNotFoundException
 import com.skyfe.repository.UserRepository
 import org.springframework.http.HttpStatus
+import org.springframework.http.HttpStatusCode
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import java.util.Optional
@@ -26,6 +27,13 @@ class UserService(
         user.password = encoder.encode(user.password)
         userRepository.save(user)
         return user
+    }
+
+    fun checkNumber(number: String): HttpStatus {
+        return if(userRepository.existsByNumber(number))
+            HttpStatus.CONFLICT
+        else
+            HttpStatus.OK
     }
 
     fun deleteUser(id: Int) =
