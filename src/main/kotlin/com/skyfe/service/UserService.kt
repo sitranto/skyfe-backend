@@ -21,10 +21,6 @@ class UserService(
             ?: throw DataNotFoundException(HttpStatus.NOT_FOUND, "User with id $id not found")
 
     fun createUser(user: User): User {
-        if(userRepository.existsByNumber(user.number))
-            throw DataAlreadyExistsException(HttpStatus.CONFLICT, "Number already exists")
-        if(userRepository.existsByUsername(user.username))
-            throw DataAlreadyExistsException(HttpStatus.CONFLICT, "Username already exists")
         user.password = encoder.encode(user.password)
         userRepository.save(user)
         return user

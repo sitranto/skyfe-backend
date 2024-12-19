@@ -22,8 +22,8 @@ class UserController(private val userService: UserService, private val authServi
 
     @PostMapping
     fun createUser(@RequestBody payload: User): AuthResponse {
-        userService.createUser(payload)
-        return authService.authentication(AuthDto(payload.number, payload.password))
+        val user = userService.createUser(payload)
+        return authService.authentication(AuthDto(user.number, user.password))
     }
 
     @PostMapping("/number")
