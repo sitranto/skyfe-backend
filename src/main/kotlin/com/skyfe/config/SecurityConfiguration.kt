@@ -28,8 +28,8 @@ class SecurityConfiguration(private val authenticationProvider: AuthenticationPr
             .csrf().disable()
             .authorizeHttpRequests {
                 it
-                    .requestMatchers("/api/**").fullyAuthenticated()
                     .requestMatchers("/api/auth", "/api/user").permitAll()
+                    .requestMatchers("/api/**").fullyAuthenticated()
             }
             .sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
