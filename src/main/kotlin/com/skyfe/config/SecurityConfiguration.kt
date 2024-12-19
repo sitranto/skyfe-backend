@@ -28,7 +28,7 @@ class SecurityConfiguration(private val authenticationProvider: AuthenticationPr
             .csrf().disable()
             .authorizeHttpRequests {
                 it
-                    .requestMatchers("/api/auth", "/api/user", "/api/user/number").permitAll()
+                    .requestMatchers("/api/auth", "/api/user", "/api/user/number", "/api/user/username").permitAll()
                     .requestMatchers("/api/**").fullyAuthenticated()
             }
             .sessionManagement {
