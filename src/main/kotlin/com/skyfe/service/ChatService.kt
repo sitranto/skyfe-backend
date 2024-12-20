@@ -39,8 +39,8 @@ class ChatService(
             chats.add(ResponseChatDto(
                 userChat.chat.id,
                 lastMessageContent,
-                partner.firstName + " " + partner.lastName)
-            )
+                partner.firstName + " " + partner.lastName
+            ))
         }
         return chats
     }

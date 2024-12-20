@@ -20,6 +20,7 @@ class Chat(
     @JsonIgnore
     @Builder.Default
     @OneToMany(
+        mappedBy = "chat",
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL]
     )
