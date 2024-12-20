@@ -15,8 +15,7 @@ class Message(
     @NotNull
     var timeSend: TimestampWithTimeZoneJdbcType,
 
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "from_id")
     var from: User,
 

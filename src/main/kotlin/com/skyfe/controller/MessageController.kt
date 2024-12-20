@@ -1,5 +1,6 @@
 package com.skyfe.controller
 
+import com.skyfe.domain.dto.MessageDto
 import com.skyfe.domain.model.Message
 import com.skyfe.service.MessageService
 import lombok.RequiredArgsConstructor
@@ -20,11 +21,16 @@ class MessageController(private val messageService: MessageService) {
     @GetMapping
     fun getAllMessages(
         @RequestHeader(HttpHeaders.AUTHORIZATION) token: String,
-        @RequestHeader("chatId") chatId: Long) =
+        @RequestHeader("chatId") chatId: Long
+    ) =
         messageService.getAllMessages(token, chatId)
     @PostMapping("/send")
-    fun sendMessage(@RequestBody payload: Message) =
-        messageService.sendMessage(payload)
+    fun sendMessage(
+        @RequestHeader(HttpHeaders.AUTHORIZATION) token: String,
+        @RequestHeader("chatId") chatId: Long,
+        @RequestBody payload: MessageDto
+    ) =
+        messageService.sendMessage(token, chatId, payload)
 
    /* @DeleteMapping("/delete/{id}")
     fun deleteMessage(@PathVariable("id") id: Int) =
