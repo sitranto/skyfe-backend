@@ -1,6 +1,5 @@
 package com.skyfe.domain.model
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import org.hibernate.type.descriptor.jdbc.TimestampWithTimeZoneJdbcType
 import org.jetbrains.annotations.NotNull

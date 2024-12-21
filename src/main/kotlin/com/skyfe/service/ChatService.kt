@@ -2,13 +2,11 @@ package com.skyfe.service
 
 import com.skyfe.domain.dto.ResponseChatDto
 import com.skyfe.domain.model.Chat
-import com.skyfe.domain.model.User
 import com.skyfe.domain.model.UserChat
 import com.skyfe.middlewhare.DataNotFoundException
 import com.skyfe.repository.ChatRepository
 import com.skyfe.repository.UserChatRepository
 import com.skyfe.repository.UserRepository
-import org.springframework.data.domain.Example
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 
